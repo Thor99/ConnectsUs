@@ -1,0 +1,21 @@
+<% @comments.each do |comment| %>
+
+<p>
+	Por: <b><%= link_to comment.user, comment.user %></b>
+</p>
+
+<p>
+	<b><%= comment.content %></b>
+</p>
+
+<p>
+	<%= time_ago_in_words(comment.created_at) %> atrás
+</p>
+
+<% if user_signed_in? && comment.user == current_user %>
+	<%= link_to "Deletar", [comment.post, comment], method: :delete, data: {confirm: "Tem certeza disso champs?"}%>
+<% end %>
+
+<hr>
+
+<% end %>

@@ -1,0 +1,83 @@
+pt:
+  users:
+    edit:
+      title: Edite seu perfil!
+    new:
+      title: Cadastre-se!
+    show:
+      name: "Nome: %{name}"
+      age: "Idade: %{age}"
+      about: "Sobre você: %{about}"
+  posts:
+    edit:
+      title: Edite seu post!
+    show:
+      title: "Titulo: %{title}"
+      description: "Descrição: %{description}"
+    new:
+      title: "Criando um novo post:"
+
+  user_sessions:
+    new:
+      title: Login
+      signup: Cadastre-se
+
+  layout:
+    signup: Cadastre-se!
+    newpost: Novo post
+    my_profile: Meu perfil
+    logout: Logout
+    signin: Login
+    
+
+
+
+
+
+
+
+
+
+  activerecord:
+    models:
+      user: Usuário
+      post: Post
+    attributes:
+      user:
+        name: Nome
+        email: Email
+        about: Sobre você
+        age: Idade
+        password: Senha
+        password_confirmation: Confirme a senha
+      post:
+        title: Titulo
+        description: Descrição
+
+
+
+
+  activemodel:
+    attributes:
+      user_session:
+        email: Email
+        password: Senha
+    errors:
+      messages:
+        invalid_login: "Usuário ou senha inválidos"
+
+  helpers:
+    submit:
+      user_session:
+        create: 'Entrar'
+
+  flash:
+    notice:
+      signed_in: "Usuário logado com sucesso! Bem vindo de volta %{name}!"
+      already_logged_in: "Já se encontra logado!"
+      signed_out: Logout efetuado com sucesso!
+    alert:
+      needs_login: "Precisa estar logado!"
+
+  dialogs:
+    destroy: Tem certeza que deseja apagar o post?

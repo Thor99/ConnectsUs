@@ -1,0 +1,29 @@
+<h2>Logue-se jovial:</h2>
+<hr>
+
+<% if @user_session.errors.has_key? :base %>
+	<div class="alert alert-danger" role="alert">
+		<%= @user_session.errors[:base].join(', ') %>
+	</div>
+<% end %>
+
+<%= form_for @user_session do |f| %>
+	<p>
+		<%= f.label :email, class: "LabelForm" %> <br>
+		<%= f.text_field :email, class: "form-control" %>
+		<%= error_tag @user_session, :email %>
+	</p>
+
+	<p>
+		<%= f.label :Senha, class: "LabelForm" %> <br>
+		<%= f.password_field :password, class: "form-control" %>
+		<%= error_tag @user_session, :password %>
+	</p>
+
+	<p>
+		<%= f.submit :class => "btn btn-default" %>
+	</p>
+
+<% end %>
+
+<p><%= link_to "Cadastre-se", new_user_path %> | <%= link_to "Home", root_path %></p> 

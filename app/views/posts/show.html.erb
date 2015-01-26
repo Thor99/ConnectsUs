@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+    	<b><%= link_to @post.title, @post %></b>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <b><%= @post.description %></b>
+  </div>
+</div>
+
+<hr>
+
+
+<% if @post.comments.count == 0 %>
+	<h2><%= @post.comments.count %> Comentários</h2>
+	<hr>
+<% else %>
+	<% if @post.comments.count == 1 %>
+		<h2><%= @post.comments.count %> Comentário:</h2>
+		<hr>
+		<%= render "comments/comment" %>
+		
+	<% else %>
+		<h2><%= @post.comments.count %> Comentários:</h2>
+		<hr>
+		<%= render "comments/comment" %>
+	<% end %>
+<% end %>
+
+<% if user_signed_in? %>
+	<h2>Adicione um comentário:</h2>
+	<%= render "comments/form" %>
+<% end %>
+
+
+<% if belongs_to_user(@post) %>
+	<p>
+		<%= link_to 'Editar post', edit_post_path %> |
+		<%= link_to "Home", root_path %> |
+		<%= link_to 'Apagar', post_path, :method => :delete, data: { confirm: "Tem certeza disso?" } %>
+	</p>
+<% else %>
+	<p>
+		<%= link_to "Home", root_path %>
+	</p>
+<% end %>
+
+
+

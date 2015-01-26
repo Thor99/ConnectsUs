@@ -1,0 +1,50 @@
+<% if @user.errors.any? %>
+	<div class="alert alert-danger" role="alert">
+		<p>Temos os seguintes erros no formulário:</p>
+	</div>
+<% end %>
+
+
+<%= form_for @user do |f| %>
+
+	<p>
+		<%= f.label :Nome, class: "LabelForm" %><br>
+		<%= f.text_field :name, class: "form-control" %>
+		<%= error_tag @user, :name %>
+	</p>
+
+	<p>
+		<%= f.label :Email, class: "LabelForm" %><br>
+		<%= f.text_field :email, class: "form-control" %>
+		<%= error_tag @user, :email %>
+	</p>
+
+	<p>
+		<%= f.label :Idade, class: "LabelForm" %><br>
+		<%= f.number_field :age, class: "form-control" %>
+		<%= error_tag @user, :age %>
+	</p>
+
+	<p>
+		<%= f.label :Senha, class: "LabelForm" %><br>
+		<%= f.password_field :password, class: "form-control" %>
+		<%= error_tag @user, :password %>
+	</p>
+
+	<p>
+		<%= f.label :Confirme_sua_senha, class: "LabelForm" %><br>
+		<%= f.password_field :password_confirmation, class: "form-control" %>
+		<%= error_tag @user, :password_confirmation %>
+	</p>
+
+	<p>
+		<%= f.label :Sobre_você, class: "LabelForm" %><br>
+		<%= f.text_area :about, class: "form-control" %>
+		<%= error_tag @user, :about %>
+	</p>
+
+	<p>
+		<%= f.submit :class => "btn btn-default" %>
+	</p>
+
+<% end %>

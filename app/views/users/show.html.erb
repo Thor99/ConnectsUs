@@ -1,0 +1,24 @@
+<% if user_signed_in? && current_user == @user %>
+	<h2>Seu perfil:</h2>
+	<hr>
+<% else %>
+	<h2>Perfil do usuário <%= @user.name %>:</h2>
+	<hr>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><b><%= @user.name %></b>, <b><%= @user.age %></b></h3>
+  </div>
+  <div class="panel-body">
+    <b>Sobre:</b> <%= @user.about %>
+  </div>
+</div>
+
+<% if user_signed_in? && current_user == @user %>
+	<%= link_to "Editar perfil", edit_user_path(@user) %> |
+	<%= link_to "Home", root_path %>
+<% else %>
+	<%= link_to "Home", root_path %>
+<% end %>
+

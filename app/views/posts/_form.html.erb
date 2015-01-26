@@ -1,0 +1,25 @@
+<% if @post.errors.any? %>
+	<div class="alert alert-danger" role="alert">
+		<p>Temos os seguintes erros no formulário:</p>
+	</div>
+<% end %>
+
+<%= form_for @post do |p| %>
+	<p>
+		<%= p.label :Título, class: "LabelForm" %><br>
+		<%= p.text_field :title, class: "form-control" %>
+		<%= error_tag @post, :title %>
+	</p> <br>
+
+	<p>
+		<%= p.label :Conteúdo, class: "LabelForm" %><br>
+		<%= p.text_area :description, class: "form-control" %>
+		<%= error_tag @post, :description %>
+	</p>
+
+	<p>
+		<%= p.submit :class => "btn btn-default"  %>
+	</p>
+	
+<% end %>
+

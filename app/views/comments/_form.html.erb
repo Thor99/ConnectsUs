@@ -1,0 +1,9 @@
+<%= form_for ([@post, @post.comments.build]) do |f| %>
+	
+	<p>
+		<%= f.text_area :content, class: "form-control" %>
+	</p>
+
+	<p><%= f.submit "Criar comentário", :class => "btn btn-default"  %></p>
+
+<% end %>

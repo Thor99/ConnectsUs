@@ -19,7 +19,4 @@ class User < ActiveRecord::Base
 		confirmed.find_by(email: email).try(:authenticate, password)
 	end
 
-	def to_s
-	  name
-	end
 end

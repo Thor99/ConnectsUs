@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|pt/ do
     resources :posts do
-      resources :comments
+      resources :comments, only: [:create, :destroy]
     end
     resources :users
     resource :user_sessions, only: [:create, :new, :destroy]

@@ -1,7 +1,7 @@
 <% @comments.each do |comment| %>
 
 <p>
-	Por: <b><%= link_to comment.user, comment.user %></b>
+	Por: <b><%= link_to comment.user.name, comment.user %></b>
 </p>
 
 <p>

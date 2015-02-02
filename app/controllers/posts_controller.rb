@@ -42,12 +42,12 @@ class PostsController < ApplicationController
 
 
 	def set_post
-		@post = Post.find(params[:id])
+		@post = Post.friendly.find(params[:id])
 		@comments = @post.comments.order("created_at DESC")
 	end
 
 	def set_users_post
-		@post = current_user.posts.find(params[:id])
+		@post = current_user.posts.friendly.find(params[:id])
 	end
 
 	# usei as funções set_post e set_users_post para escrever menos código, mas não tem muito a ver com segurança

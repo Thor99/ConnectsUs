@@ -25,6 +25,8 @@ gem 'kaminari'
 
 gem 'bootstrap-kaminari-views'
 
+gem 'friendly_id', '~> 5.1.0'
+
 group :development do
 	gem 'sqlite3'
 	gem 'spring'

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	extend FriendlyId
 	has_many :posts, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
@@ -12,6 +13,8 @@ class User < ActiveRecord::Base
 	validates_length_of :about, :minimum => 15
 	validates_uniqueness_of :email
 	validates_format_of :email, with: EMAIL_REGEXP
+
+	friendly_id :name, use: [:slugged, :history]
 
 	has_secure_password
 

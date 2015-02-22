@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_action :can_change, only: [:update, :edit]
 
 	def show
-		@user = User.find(params[:id])
+		@user = User.friendly.find(params[:id])
 	end
 
 	def new
@@ -21,11 +21,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		@user = User.friendly.find(params[:id])
 	end
 
 	def update
-		@user = User.find(params[:id])
+		@user = User.friendly.find(params[:id])
 
 		if @user.update(user_params)
 			redirect_to @user, notice: "Perfil editado com sucesso!"
@@ -48,6 +48,6 @@ class UsersController < ApplicationController
 	end
 
 	def user
-		@user ||= User.find(params[:id])
+		@user ||= User.friendly.find(params[:id])
 	end
 end

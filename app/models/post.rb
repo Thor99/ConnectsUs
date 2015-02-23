@@ -9,4 +9,12 @@ class Post < ActiveRecord::Base
 
 	friendly_id :title, use: [:slugged, :history]
 
+	def self.search(query)
+		if query.present?
+			where(['title LIKE :query OR description LIKE :query', query: "%#{query}%"])
+		else
+			all
+		end
+	end
+
 end

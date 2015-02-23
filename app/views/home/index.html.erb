@@ -1,26 +1,65 @@
-<% if @posts.count == 0 %>
-	<h2>Até o momento não temos nenhum post!</h2>	
-<% else %>
-	<h2><b><%= link_to "Posts!", root_path %></b></h2>
-	<hr>
+<br> <br>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+      <%= form_tag root_path, method: :get do %>
+			<%= text_field_tag :q, @search, class: 'form-control', placeholder: "Procure algum post!" %>
+		<% end %>
+    </div>
+  </div>
+</div>
 
-	<% @posts.each do |post| %>
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">
-		    	<b><%= link_to post.title, post %></b>, <%= time_ago_in_words(post.created_at) %> atrás
-		    </h3>
-		  </div>
+<br> <br>
 
-		  <div class="panel-body">
-		  	<%= truncate post.description %> <br> <br>
-		  	Autor: <b><%= link_to post.user.name, post.user %></b>
-		  </div>
+<% if @search.present? %>
+	<% if @posts_founded.count == 0 %>
+		<h3>
+			<span class="glyphicon glyphicon-remove-circle"></span><b>Não foi encontrado nenhum post com o termo de pesquisa</b> <span class="glyphicon glyphicon-remove-circle"></span>
+		</h3> 
+	<% else %>
+		<% @posts_founded.each do |post| %>
+			<div class="panel panel-default">
+		  		<div class="panel-heading">
+		    		<h3 class="panel-title">
+		    			<b><%= link_to post.title, post %></b>, <%= time_ago_in_words(post.created_at) %> atrás
+		    		</h3>
+		  		</div>
 
-		</div>
+		  		<div class="panel-body">
+		  			<%= truncate post.description %> <br> <br>
+		  			Autor: <b><%= link_to post.user.name, post.user %></b>
+		  		</div>
+			</div>
+		<% end %>
 	<% end %>
 
-	<p class="lead">Clique no Título do post para mais informações!</p>
+<% else %>
+
+	<% if @posts.count == 0 %>
+		<h2>Até o momento não temos nenhum post!</h2>	
+	<% else %>
+		<% @posts.each do |post| %>
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">
+			    	<b><%= link_to post.title, post %></b>, <%= time_ago_in_words(post.created_at) %> atrás
+			    </h3>
+			  </div>
+
+			  <div class="panel-body">
+			  	<%= truncate post.description %> <br> <br>
+			  	Autor: <b><%= link_to post.user.name, post.user %></b>
+			  </div>
+
+			</div>
+		<% end %>
+
+		<p class="lead">Clique no Título do post para mais informações!</p>
+
+	<% end %>
 
 <% end %>
 
